@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            margin: 0;
+            font-size: 14px;
+        }
+        .class1{
+            border-radius: 100%;
+            margin: 2px;
+            animation-fill-mode: both;
+            border-bottom-color: #fff;
+            height: 16px;
+            width: 16px;
+            display: inline-block;
+            animation: rotate .75s 0s linear infinite;
+        }
+
+        #container{
+            width: 400px;
+            height: 300px;
+            box-sizing: border-box;
+            padding-left: 100px;
+            background-color: skyblue;
+            margin: 200px auto;
+            align-content: center;
+            border-radius: 20px;
+        }
+        #input-file{
+            display: none;
+        }
+        label{
+            display: block;
+            box-sizing: border-box;
+            width: 80px;
+            height: 40px;
+            background-color: red;
+            border-radius: 15px;
+            text-align: center;
+            padding-top: 10px;
+        }
+
+        img{
+            width: 180px;
+            height: 180px;
+            border-radius: 90px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <p style="color: aliceblue; font-family: 'Courier New', Courier, monospace; font-size: 20px;">图片上传</p>
+        <img src="images/" alt="" id="picture">
+        <label for="input-file">上传图片</label>
+        <input type="file" id="input-file" accept="images/jpg,images/png">
+    </div>
+
+    <div class="class1"></div>
+    <script type="text/javascript">
+        // let jsonObj = {};
+        // function dom2json(str, obj) {
+        //     let container = document.querySelector(str);
+        //     let childs = container.childNodes;
+        //     let attr = container.attributes;
+        //     // console.log(container,childs,attr);
+        //     let name = container.nodeName;
+        //     obj.tag = name;
+        //     obj.attributes = {};
+        //     obj.children = [];
+
+        //     // if()
+        //     for (let i = 0; i < attr.length; i++) {
+        //         let arr = attr[i].split('=')
+        //         obj.attributes[arr[0]] = arr[1];
+        //     }
+
+        //     if (childs.length > 0) {
+        //         for (let i = 0; i < childs.length; i++) {
+        //             let str = childs[i].nodeName;
+        //             obj.children[i] = {}
+        //             dom2json(str, obj.children[i]);
+        //         }
+        //     }
+
+        //     return obj;
+
+        // }
+        // // console.log(dom2json('#jsContainer',{}));
+        // let obj = {
+        //     name: 'bob',
+        //     age: 18,
+        //     res: [1, 2, 3],
+        //     to: function () {
+        //         console.log('123123123')
+        //     },
+        //     child: {
+        //         child1: 'bob',
+        //         child2: 'cop',
+        //         child3: 'cat'
+        //     }
+        // }
+
+        let img = document.getElementById('picture')
+        let input = document.getElementById('input-file')
+
+        input.onchange = function(){
+            img.src = URL.createObjectURL(input.files[0])
+        }
+    </script>
+</body>
+
+</html>
