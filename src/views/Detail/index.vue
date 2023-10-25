@@ -16,6 +16,7 @@ const getGoods = async ()=>{
   let res = await getDetail(route.params.id);
   // console.log(res,'detail');
   goods.value = res.data.result;
+  console.log('goods',goods.value)
 }
 onMounted(()=>getGoods());
 

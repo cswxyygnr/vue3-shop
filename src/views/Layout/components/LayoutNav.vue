@@ -1,13 +1,16 @@
 <script setup>
 import {useUser} from '@/stores/user'
+import{useCart} from '@/stores/cart'
 import {useRouter} from 'vue-router'
 let userInfo = ref({})
 const router = useRouter()
 userInfo.value = JSON.parse(localStorage.getItem('userInfo'))
 // console.log(userInfo.value.userInfo.account,'=====')
 const userStore = useUser();
+const cartStore = useCart();
 const confirm = ()=>{
   userStore.clearUserInfo();
+  cartStore.deleteLocalStorage();
   router.push('/login');
 }
 
@@ -30,7 +33,7 @@ const confirm = ()=>{
             </el-popconfirm>
           </li>
           <li><a href="javascript:;">我的订单</a></li>
-          <li><a href="javascript:;">会员中心</a></li>
+          <li><router-link to="/member">会员中心</router-link></li>
         </template>
         <template v-else>
           <li><a href="javascript:;" @click="$router.push('/login')">请先登录</a></li>

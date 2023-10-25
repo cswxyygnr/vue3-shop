@@ -70,19 +70,19 @@ const router = createRouter({
 })
 
 
-router.beforeEach((to,from,next)=>{
-  let obj = JSON.parse(localStorage.getItem('userInfo')) || {}
+// router.beforeEach((to,from,next)=>{
+//   let obj = JSON.parse(localStorage.getItem('userInfo')) || {}
 
-  const userStore = useUser();
-  userStore.getUserInfo(obj);
-  if(to.path == '/login' && Object.keys(userStore.userInfo).length != 0)next('/');
-  else next();
+//   const userStore = useUser();
+//   userStore.getUserInfo(obj);
+//   if(to.path == '/login' && Object.keys(userStore.userInfo).length != 0)next('/');
+//   else next();
 
 
-  // if(!userStore.userInfo){
-  //   let obj = JSON.parse(localStorage.getItem('userInfo')) || {}
-  //   // userStore.userInfo = ref(obj)
-  //   userStore.getUserInfo();
-  // }
-})
+//   // if(!userStore.userInfo){
+//   //   let obj = JSON.parse(localStorage.getItem('userInfo')) || {}
+//   //   // userStore.userInfo = ref(obj)
+//   //   userStore.getUserInfo();
+//   // }
+// })
 export default router

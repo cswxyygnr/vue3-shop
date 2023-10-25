@@ -32,7 +32,6 @@ export const useCart = defineStore('cart', () => {
 
     }
 
-
     const delCart = async (skuId) => {
         if (isLogin) {
             delCartAPI(skuId);
@@ -49,6 +48,7 @@ export const useCart = defineStore('cart', () => {
     const updateCartList = async () =>{
         let res = await findNewCartListAPI();
         cartList.value = res.data.result;
+        localStorage.setItem('cart', JSON.stringify(cartList.value));
     }
     const singleCheck = (skuId, selected) => {
         const good = cartList.value.find(item => item.skuId == skuId)
@@ -60,6 +60,10 @@ export const useCart = defineStore('cart', () => {
             item.selected = selected
             return item;
         })
+    }
+
+    const deleteLocalStorage = ()=>{
+        localStorage.removeItem('cart');
     }
 
     const allCount = computed(() => {
@@ -89,6 +93,7 @@ export const useCart = defineStore('cart', () => {
         selectedPrice,
         selectedCount,
         allCount,
+        deleteLocalStorage,
         sum,
         cartList,
         addCart,
